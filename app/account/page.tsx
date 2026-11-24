@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { createBrowserSupabaseClient } from '@/lib/supabase/browser';
+import { withBasePath } from '@/lib/base-path';
 
 type SessionUser = { email?: string; user_metadata?: { full_name?: string } };
 
@@ -31,7 +32,7 @@ export default function Account() {
       const supabase = createBrowserSupabaseClient();
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: `${window.location.origin}/account`, queryParams: { prompt: 'select_account' } },
+        options: { redirectTo: `${window.location.origin}${withBasePath('/account/')}`, queryParams: { prompt: 'select_account' } },
       });
       if (authError) throw authError;
     } catch (signInError) {

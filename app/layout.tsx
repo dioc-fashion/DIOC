@@ -4,6 +4,7 @@ import './premium.css';
 import { SiteChrome } from '@/components/SiteChrome';
 import { StoreProvider } from '@/components/StoreProvider';
 import { siteUrl } from '@/lib/config';
+import { withBasePath } from '@/lib/base-path';
 
 export const metadata: Metadata = {
   title: { default: 'DIOC | Timeless Style. Modern Elegance.', template: '%s | DIOC' },
@@ -11,15 +12,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+      { url: withBasePath('/favicon.svg'), type: 'image/svg+xml' },
+      { url: withBasePath('/favicon-32x32.png'), type: 'image/png', sizes: '32x32' },
+      { url: withBasePath('/favicon-16x16.png'), type: 'image/png', sizes: '16x16' },
     ],
-    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
-    shortcut: '/favicon.ico',
+    apple: [{ url: withBasePath('/apple-touch-icon.png'), sizes: '180x180', type: 'image/png' }],
+    shortcut: withBasePath('/favicon.ico'),
   },
-  manifest: '/site.webmanifest',
-  openGraph: { type: 'website', locale: 'en_KE', siteName: 'DIOC', images: ['/og-dioc.png'] },
+  manifest: withBasePath('/site.webmanifest'),
+  openGraph: { type: 'website', locale: 'en_KE', siteName: 'DIOC', images: [withBasePath('/og-dioc.png')] },
 };
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

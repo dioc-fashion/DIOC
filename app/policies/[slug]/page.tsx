@@ -7,6 +7,10 @@ const policies: Record<string, { title: string; content: string }> = {
   payments: { title: 'Payment information', content: 'WhatsApp orders can be confirmed manually. M-Pesa payment initiation is intentionally not activated until Daraja credentials and callback verification are complete.' },
 };
 
+export function generateStaticParams() {
+  return Object.keys(policies).map((slug) => ({ slug }));
+}
+
 export default async function Policy({ params }: { params: Promise<{ slug: string }> }) {
   const policy = policies[(await params).slug];
   if (!policy) notFound();
