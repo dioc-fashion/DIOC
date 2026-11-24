@@ -7,6 +7,10 @@ const pages: Record<string, { eyebrow: string; title: string; body: string }> = 
   privacy: { eyebrow: 'Privacy', title: 'Your privacy matters.', body: 'This page is an editable template placeholder. Obtain approved privacy wording for your business, including data controller details and customer rights, before launch.' },
 };
 
+export function generateStaticParams() {
+  return Object.keys(pages).map((page) => ({ page }));
+}
+
 export default async function StaticPage({ params }: { params: Promise<{ page: string }> }) {
   const page = pages[(await params).page];
   if (!page) notFound();
