@@ -1,4 +1,4 @@
-
+﻿
 # Dependencies
 node_modules/
 
@@ -27,6 +27,8 @@ target/
 # Debug logs
 npm-debug.log*
 
-desktop-admin/
-
+desktop-admin/*
+!desktop-admin/publish-local-catalog.mjs
 tmp/
+
+
